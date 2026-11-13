@@ -20,7 +20,7 @@ function App() {
         ) : (
           <UserList
             users={users}
-            selectedId={selectedUser?.id || null}
+            selectedId={selectedUser?.id ?? null}
             onSelect={setSelectedUser}
           />
         )
