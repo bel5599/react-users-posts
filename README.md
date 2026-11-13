@@ -57,13 +57,17 @@ src/
 - **Tests de comportamiento** con Testing Library: buscan elementos como lo haría un usuario
   (por rol y etiqueta) y la API está simulada para no depender de la red.
 
+
 ## Qué haría con más tiempo
 
-- Usar **TanStack Query** para caché, reintentos y no repetir peticiones al volver a un usuario.
-- Paginación o virtualización si la lista de usuarios fuera grande.
-- Mostrar el error de cada campo junto a él con `aria-describedby` y mover el foco al primer error.
-- Tests del caso de error al crear una publicación y de la condición de carrera.
-- Tests end-to-end con Playwright.
+- **Caché de peticiones:** ahora, si vuelvo a un usuario que ya vi, se vuelven a pedir sus
+  publicaciones. Con una librería como TanStack Query se guardarían en memoria.
+- **Más tests:** el caso de error al crear una publicación y el cambio rápido de usuario.
+- **Mejor accesibilidad en el formulario:** llevar el foco al primer campo con error.
+- **Paginación de publicaciones:** mostrar, por ejemplo, 5 por página con botones
+  "Anterior" y "Siguiente". JSONPlaceholder lo permite con los parámetros `_page` y `_limit`.
+
+
 
 ## Cómo usé la IA
 
@@ -84,8 +88,8 @@ probé en el navegador y entiendo cada parte.
 **Qué corregí o decidí yo:**
 - Elegí ESLint en lugar de Oxlint por ser el estándar.
 - La IA propuso reiniciar `loading` y `error` dentro del `useEffect`; el linter de React lo
-  marcó como mala práctica (renders en cascada). Lo resolví con la `key` por usuario.
-- La IA me avisó de que la API repite el id: 101; lo comprobé y asigno un id local único.
+marcó como mala práctica (renders en cascada). Lo cambiamos por una `key` por usuario.
+- La IA me avisó de que la API repite el `id: 101`; lo comprobé y asigno un id local único.
 - La IA me señaló la condición de carrera al cambiar de usuario; la resolví con la bandera `ignore`.
 
 ## Tiempo
