@@ -3,6 +3,7 @@ import './App.css'
 import type { User } from './types'
 import { useUsers } from './hooks/useUsers'
 import { UserList } from './components/UserList'
+import { UserPosts } from './components/UserPosts'
 
 function App() {
   const { users, loading, error } = useUsers()
@@ -24,6 +25,7 @@ function App() {
           />
         )
       }
+      {selectedUser && <UserPosts key={selectedUser.id} user={selectedUser} />}
     </main>
   )
 }
